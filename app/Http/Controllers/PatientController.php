@@ -14,4 +14,23 @@ class PatientController extends Controller {
 		parent::__construct($repo, $transformer);
 	}
 
+	public function index(Request $request)
+	{
+		$searchables = $this->repo->getSearchableFields();
+		$params = array_filter( $request->only( $searchables ) );
+
+		// Use regular index controller if no search params passed
+		if( empty($params))
+		{
+			return parent::index($request);
+		}
+
+		$limit = $request->get('limit', 20);
+		$offset = $request->get('offset', 0);
+		$collection = $this->repo->getWhereFieldsLike($params, $limit, $offset);
+
+		$data = $this->transformer->transform( $collection );
+
+		return $this->getResponder()->setMeta($this->repo->getMetaArray())->respondOk( $data );
+	}
 }

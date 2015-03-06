@@ -33,8 +33,21 @@ $factory('OEMR\\Models\\Patient', [
 	'phone_cell' => $faker->phoneNumber,
 	'sex' => $faker->randomElement(['M', 'F']),
 	'email' => $faker->freeEmail,
+	'status' => $faker->randomElement(['single', 'married', 'divorced', 'widowed', 'separated', 'domestic partner']),
 	'family_size' => $faker->randomDigit,
 	'monthly_income' => $faker->numberBetween(25000, 120000),
 	'pid' => $faker->unique()->randomNumber(5),
 	'mothersname' => $faker->lastName
+]);
+
+$factory('OEMR\\Models\\Pnote', [
+	'date' => $faker->dateTimeThisYear(),
+	'body' => $faker->sentence,
+	'pid' => 'factory:OEMR\\Models\\Patient',
+	'user' => 'admin',
+	'groupname' => 'Default',
+	'activity' => 1,
+	'authorized' => 1,
+	'title' => 'Chart Note',
+	'message_status' => 'New'
 ]);
