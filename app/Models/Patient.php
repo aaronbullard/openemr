@@ -11,4 +11,9 @@ class Patient extends Model {
 	{
 		return $this->hasMany('OEMR\\Models\\Prescription');
 	}
+
+	public function appointments()
+	{
+		return $this->hasMany('OEMR\\Models\\Appointment', 'pc_pid');
+	}
 }

@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder {
 	private $users = [];
 	private $patients = [];
 	private $pNotes = [];
+	private $appointments = [];
 
 	/**
 	 * Run the database seeds.
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder {
 		$this->seedUsers();
 		$this->seedPatients();
 		$this->seedPnotes();
+		$this->seedAppointments();
 	}
 
 	private function seedUsers()
@@ -39,6 +41,14 @@ class DatabaseSeeder extends Seeder {
 		foreach($this->patients as $patient)
 		{
 			$this->pNotes[] = TestDummy::times(3)->create('OEMR\\Models\\Pnote', ['pid' => $patient->id]);
+		}
+	}
+
+	private function seedAppointments()
+	{
+		foreach($this->patients as $patient)
+		{
+			$this->pNotes[] = TestDummy::create('OEMR\\Models\\Appointment', ['pc_pid' => $patient->id]);
 		}
 	}
 }

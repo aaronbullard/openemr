@@ -51,3 +51,21 @@ $factory('OEMR\\Models\\Pnote', [
 	'title' => 'Chart Note',
 	'message_status' => 'New'
 ]);
+
+$factory('OEMR\\Models\\Facility', [
+	'name' => $faker->company,
+	'phone' => $faker->phoneNumber,
+	'fax' => $faker->phoneNumber,
+	'street' => $faker->streetAddress,
+	'city' => $faker->city,
+	'postal_code' => $faker->postcode
+]);
+
+$factory('OEMR\\Models\\Appointment', [
+  'pc_pid' => 'factory:OEMR\\Models\\Patient',
+  'pc_title' => 'Office visit',
+  'pc_time' => $faker->dateTimeThisMonth,
+  'pc_hometext' => $faker->sentence,
+  'pc_informant' => 'factory:OEMR\\Models\\User',
+  'pc_facility' => 'factory:OEMR\\Models\\Facility'
+]);

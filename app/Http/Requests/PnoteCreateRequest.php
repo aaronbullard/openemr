@@ -23,8 +23,8 @@ class PnoteCreateRequest extends Request {
 	{
 		return [
 			'body' => 'required',
-			'title' => 'required|in:Chart Note',
-			'assigned_to' => ''
+			'title' => 'required|exists:list_options,option_id',
+			'assigned_to' => 'exists:users'
 		];
 	}
 

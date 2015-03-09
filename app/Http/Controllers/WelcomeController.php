@@ -1,6 +1,8 @@
 <?php namespace OEMR\Http\Controllers;
 
-class WelcomeController extends Controller {
+use Illuminate\Routing\Controller as BaseController;
+
+class WelcomeController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------

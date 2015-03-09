@@ -16,3 +16,5 @@ Route::get('/', 'WelcomeController@index');
 Route::resource('users', 'UserController');
 Route::resource('patients', 'PatientController');
 Route::resource('patients.notes', 'PatientNoteController');
+Route::resource('appointments', 'AppointmentController');
+Route::post('appointments/{apptId}', 'AppointmentController@update');
