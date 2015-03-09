@@ -6,6 +6,7 @@ use OEMR\Http\Requests\PnoteCreateRequest;
 use OEMR\Repositories\PnoteRepository;
 use OEMR\Transformers\PnoteTransformer;
 use OEMR\Models\Pnote;
+use OEMR\Events\PatientNoteWasCreated;
 
 use Illuminate\Http\Request;
 
@@ -42,6 +43,8 @@ class PatientNoteController extends Controller {
 		$pnote->authorized = 1;
 
 		$this->repo->save( $pnote );
+
+		event( new PatientNoteWasCreated( $pnote ));
 
 		$data = $this->transformer->transform( $pnote );
 
