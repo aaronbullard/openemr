@@ -9,6 +9,10 @@ modules:
     enabled:
         - PhpBrowser
         - \Helper\Acceptance
+        - Laravel5
+        - REST
     config:
         PhpBrowser:
-            url: 'http://localhost/myapp/'
+            url: 'http://emr-api.app:80/'
+        REST:
+            url: 'http://emr-api.app:80/'

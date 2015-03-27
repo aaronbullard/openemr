@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'mysql_local',
+	'default' => env('APP_ENV', 'openemr'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -48,11 +48,11 @@ return [
 
 		'sqlite' => [
 			'driver'   => 'sqlite',
-			'database' => storage_path().'/database.sqlite',
+			'database' => base_path() . '/tests/_data/database.sqlite',
 			'prefix'   => '',
 		],
 
-		'mysql_openemr' => [
+		'openemr' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'forge'),
@@ -64,10 +64,10 @@ return [
 			'strict'    => false,
 		],
 
-		'mysql_local' => [
+		'local' => [
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'openemr',
+			'database'  => 'homestead',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
