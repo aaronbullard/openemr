@@ -23,7 +23,7 @@
 # Dump of table users_secure
 # ------------------------------------------------------------
 
-LOCK TABLES `users_secure` WRITE;
+#LOCK TABLES `users_secure` WRITE;
 /*!40000 ALTER TABLE `users_secure` DISABLE KEYS */;
 
 INSERT INTO `users_secure` (`id`, `username`, `password`, `salt`, `last_update`, `password_history1`, `salt_history1`, `password_history2`, `salt_history2`)
@@ -31,7 +31,7 @@ VALUES
 	(1,'admin','$2a$05$4GxmZNPU0lb9RdQ0JBObO.Rc26GhreHj/6nEVfgx.0SiXtzYmrVly','$2a$05$4GxmZNPU0lb9RdQ0JBObO$','2015-03-30 17:17:22',NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `users_secure` ENABLE KEYS */;
-UNLOCK TABLES;
+#UNLOCK TABLES;
 
 
 
