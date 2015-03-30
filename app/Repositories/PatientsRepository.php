@@ -1,7 +1,9 @@
 <?php namespace OEMR\Repositories;
 
+use Exception;
 use Aaronbullard\CrudOps\Repository;
 use Aaronbullard\Exceptions\MethodNotAllowedException;
+use Aaronbullard\Exceptions\NotFoundException;
 use OEMR\Models\Patient;
 
 class PatientsRepository extends Repository {
@@ -20,6 +22,18 @@ class PatientsRepository extends Repository {
 	public function getSearchableFields()
 	{
 		return static::$searchable['who'];
+	}
+
+	public function findByPID($pid)
+	{
+		$patient = $this->model->where('pid', $pid)->first();
+
+		if( is_null($patient))
+		{
+			throw new NotFoundException("Patient not found.");
+		}
+		
+		return $patient;
 	}
 
 	public function getWhereFieldsLike(array $params, $limit = NULL, $offset = NULL)

@@ -33,4 +33,13 @@ class PatientController extends Controller {
 
 		return $this->getResponder()->setMeta($this->repo->getMetaArray())->respondOk( $data );
 	}
+
+	public function show($pid)
+	{
+		$obj = $this->repo->findByPID($pid);
+
+		$data = $this->transformer->transform( $obj );
+
+		return $this->getResponder()->setMeta($this->repo->getMetaArray())->respondOk( $data );
+	}
 }

@@ -8,7 +8,7 @@ class PatientTransformer extends Transformer {
 	{
 		$array = $patient->toArray();
 
-		$array['appointments'] = (new AppointmentTransformer)->transform($patient->appointments()->get());
+		// $array['appointments'] = (new AppointmentTransformer)->transform($patient->appointments()->get());
 
 		return $array;
 	}

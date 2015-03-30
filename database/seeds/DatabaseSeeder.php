@@ -20,18 +20,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->seedAdmin();
 		$this->seedUsers();
 		$this->seedPatients();
 		$this->seedPnotes();
 		$this->seedAppointments();
-	}
-
-	// Doesn't work
-	public function seedAdmin()
-	{
-		$filepath = __DIR__ . '/admin.sql';
-		DB::unprepared(file_get_contents($filepath));
 	}
 
 	private function seedUsers()
@@ -48,7 +40,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		foreach($this->patients as $patient)
 		{
-			$this->pNotes[] = TestDummy::times(3)->create('OEMR\\Models\\Pnote', ['pid' => $patient->id]);
+			$this->pNotes[] = TestDummy::times(3)->create('OEMR\\Models\\Pnote', ['pid' => $patient->pid]);
 		}
 	}
 
@@ -56,7 +48,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		foreach($this->patients as $patient)
 		{
-			$this->pNotes[] = TestDummy::create('OEMR\\Models\\Appointment', ['pc_pid' => $patient->id]);
+			$this->pNotes[] = TestDummy::create('OEMR\\Models\\Appointment', ['pc_pid' => $patient->pid]);
 		}
 	}
 }
