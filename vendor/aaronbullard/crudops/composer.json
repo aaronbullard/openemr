@@ -1,0 +1,31 @@
+{
+    "name": "aaronbullard/crudops",
+    "description": "Description here",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aaron Bullard",
+            "email": "jabullard@aol.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/foundation": "~5.0",
+        "illuminate/http": "~5.0",
+        "illuminate/routing": "~5.0",
+        "aaronbullard/restful": "dev-master",
+        "aaronbullard/transformers": "dev-master",
+        "aaronbullard/exceptions": "dev-master"
+    },
+    "repositories": [
+        {
+            "url": "https://github.com/aaronbullard/exceptions",
+            "type": "vcs"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aaronbullard\\CrudOps\\": "src/"
+        }
+    }
+}

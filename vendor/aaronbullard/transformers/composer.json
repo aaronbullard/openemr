@@ -1,0 +1,20 @@
+{
+    "name": "aaronbullard/transformers",
+    "description": "",
+    "authors": [
+        {
+            "name": "Aaron Bullard",
+            "email": "JABullard@aol.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2 - 5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Aaronbullard\\Transformers": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

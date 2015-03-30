@@ -1,0 +1,33 @@
+{
+    "name": "aaronbullard/restful",
+    "description": "",
+    "authors": [
+        {
+            "name": "Aaron Bullard",
+            "email": "JABullard@aol.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": "~5.0",
+        "aaronbullard/exceptions": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1",
+        "codeception/codeception": "2.1.*@dev",
+        "mockery/mockery": "dev-master"
+    },
+    "repositories": [
+        {
+            "url": "https://github.com/aaronbullard/exceptions",
+            "type": "vcs"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aaronbullard\\Restful\\": "src/Restful/"
+        }
+    },
+    "minimum-stability": "stable"
+}
