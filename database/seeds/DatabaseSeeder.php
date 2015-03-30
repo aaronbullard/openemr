@@ -1,5 +1,6 @@
 <?php
 
+use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\TestDummy\Factory as TestDummy;
@@ -20,10 +21,17 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		$this->seedAdmin();
 		$this->seedUsers();
 		$this->seedPatients();
 		$this->seedPnotes();
 		$this->seedAppointments();
+	}
+
+	public function seedAdmin()
+	{
+		$filepath = __DIR__ . '/admin.sql';
+		DB::unprepared(file_get_contents($filepath));
 	}
 
 	private function seedUsers()
