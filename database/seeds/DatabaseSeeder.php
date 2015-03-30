@@ -20,13 +20,14 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		$this->seedAdmin();
+		// $this->seedAdmin();
 		$this->seedUsers();
 		$this->seedPatients();
 		$this->seedPnotes();
 		$this->seedAppointments();
 	}
 
+	// Doesn't work
 	public function seedAdmin()
 	{
 		$filepath = __DIR__ . '/admin.sql';
