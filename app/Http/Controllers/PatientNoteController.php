@@ -51,4 +51,13 @@ class PatientNoteController extends Controller {
 		return $this->getResponder()->respondCreated( $data );
 	}
 
+	public function destroy($patientId, $noteId)
+	{
+		$note = $this->repo->findById( $noteId );
+
+		$this->repo->delete( $note );
+
+		return $this->getResponder()->respondOk( "Note was deleted." );
+	}
+
 }
