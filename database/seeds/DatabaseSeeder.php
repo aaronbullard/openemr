@@ -1,6 +1,5 @@
 <?php
 
-use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\TestDummy\Factory as TestDummy;
