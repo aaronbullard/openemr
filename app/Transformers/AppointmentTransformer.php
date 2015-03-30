@@ -1,8 +1,7 @@
 <?php namespace OEMR\Transformers;
 
-use Aaronbullard\Transformers\Transformer;
 
-class AppointmentTransformer extends Transformer {
+class AppointmentTransformer extends BaseTransformer {
 
 	public function transformObject($appt)
 	{

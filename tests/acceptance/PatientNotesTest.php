@@ -9,7 +9,16 @@ class PatientNotesTest extends \Codeception\TestCase\Test
 	 */
 	protected $tester;
 
-	protected $_patientId = 6;
+	protected $_patientId;
+
+	public function _before()
+	{
+		$this->tester->sendGET("/patients");
+		$patients = $this->tester->grabDataFromJsonResponse('data');
+		$patient = $patients[3];
+
+		$this->_patientId = $patient['pid'];
+	}
 
 	// tests
 	public function testGetRequest()

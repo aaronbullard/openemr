@@ -9,8 +9,6 @@ class PatientsTest extends \Codeception\TestCase\Test
 	 */
 	protected $tester;
 
-	protected $_patientId = 6;
-
 	// tests
 	public function testGetIndex()
 	{
@@ -26,10 +24,13 @@ class PatientsTest extends \Codeception\TestCase\Test
 
 	public function testGetPatient()
 	{
-		$this->tester->sendGET("/patients/$this->_patientId");
+		$patients = $this->testGetIndex();
+		$patient = $patients[3];
+
+		$this->tester->sendGET("/patients/{$patient['pid']}");
 		$this->tester->seeResponseCodeIs(200);
 		$patient = $this->tester->grabDataFromJsonResponse('data');
-		$this->assertEquals($this->_patientId, $patient['id']);
+		$this->assertEquals($patient['pid'], $patient['pid']);
 
 		return $patient;
 	}

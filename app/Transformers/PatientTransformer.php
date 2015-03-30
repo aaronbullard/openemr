@@ -1,14 +1,15 @@
 <?php namespace OEMR\Transformers;
 
-use Aaronbullard\Transformers\Transformer;
-
-class PatientTransformer extends Transformer {
+class PatientTransformer extends BaseTransformer {
 
 	public function transformObject($patient)
 	{
 		$array = $patient->toArray();
 
-		// $array['appointments'] = (new AppointmentTransformer)->transform($patient->appointments()->get());
+		static::castToIntegers($array, ['id', 'drivers_license', 'pharmacy_id', 'providerID', 'ref_providerID', 'pid', 'fitness']);
+
+		// make unix
+		static::castToUnixTimestamps($array, ['date', 'financial_review', 'regdate', 'contrastart', 'ad_reviewed', 'deceased_date']);
 
 		return $array;
 	}
