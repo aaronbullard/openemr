@@ -3,13 +3,14 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\TestDummy\Factory as TestDummy;
+use OEMR\Models\Patient;
 
 class DatabaseSeeder extends Seeder {
 
+	protected static $pids = [4161, 4162, 4163, 4164, 4165, 4166, 4167, 4168];
+
 	private $users = [];
 	private $patients = [];
-	private $pNotes = [];
-	private $appointments = [];
 
 	/**
 	 * Run the database seeds.
@@ -20,35 +21,43 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		$this->seedUsers();
-		$this->seedPatients();
-		$this->seedPnotes();
-		$this->seedAppointments();
-	}
+		$this->users = $this->seedUsers(3);
+		$this->patients = $this->seedPatients(8);
 
-	private function seedUsers()
-	{
-		$this->users = TestDummy::times(10)->create('OEMR\\Models\\User');
-	}
-
-	private function seedPatients()
-	{
-		$this->patients = TestDummy::times(500)->create('OEMR\\Models\\Patient');
-	}
-
-	private function seedPnotes()
-	{
 		foreach($this->patients as $patient)
 		{
-			$this->pNotes[] = TestDummy::times(3)->create('OEMR\\Models\\Pnote', ['pid' => $patient->pid]);
+			$this->seedPnotes($patient, 3);
+			$this->seedAppointments($patient, 2);
 		}
+		
 	}
 
-	private function seedAppointments()
+	private function seedUsers($count)
 	{
-		foreach($this->patients as $patient)
+		return TestDummy::times($count)->create('OEMR\\Models\\User');
+	}
+
+	private function seedPatients($count)
+	{
+		$pid = static::$pids[0];
+
+		// Make first 8
+		while($count--)
 		{
-			$this->pNotes[] = TestDummy::create('OEMR\\Models\\Appointment', ['pc_pid' => $patient->pid]);
+			$patients[] = TestDummy::create('OEMR\\Models\\Patient', ['pid' => $pid]);
+			$pid++;
 		}
+
+		return $patients;
+	}
+
+	private function seedPnotes(Patient $patient, $count)
+	{
+		return TestDummy::times($count)->create('OEMR\\Models\\Pnote', ['pid' => $patient->pid]);
+	}
+
+	private function seedAppointments(Patient $patient, $count)
+	{
+		return TestDummy::times($count)->create('OEMR\\Models\\Appointment', ['pc_pid' => $patient->pid]);
 	}
 }

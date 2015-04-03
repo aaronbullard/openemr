@@ -12,7 +12,7 @@ class CreateOpenemrTables extends Migration {
 	 */
 	public function up()
 	{
-		$filepath = __DIR__ . '/openemr_2015-03-04.sql';
+		$filepath = __DIR__ . '/openemr_2015-03-30.sql';
 		DB::unprepared(file_get_contents($filepath));
 	}
 

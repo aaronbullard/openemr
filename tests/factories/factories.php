@@ -11,27 +11,27 @@ $factory('OEMR\\Models\\User', [
 	'city' => $faker->city,
 	'state' => $faker->stateAbbr,
 	'zip' => $faker->postcode,
-	'phone' => $faker->phoneNumber,
+	'phone' => $faker->numerify('(###)-###-####'),
 	'notes' => $faker->paragraphs(3)
 ]);
 
 $factory('OEMR\\Models\\Patient', [
-	'title' => $faker->title,
+	'title' => $faker->randomElement(['Mr.', 'Ms.', 'Mrs.', 'Mr.']),
 	'fname' => $faker->firstName,
 	'lname' => $faker->lastName,
 	'mname' => $faker->firstName,
-	'DOB' => $faker->date('Y-m-d', '-5 years'),
+	'DOB' => $faker->date('Y-m-d', '-15 years'),
 	'street' => $faker->streetAddress,
 	'postal_code' => $faker->postcode,
 	'city' => $faker->city,
 	'state' => $faker->stateAbbr,
 	'country_code' => 'US',
 	'drivers_license' => $faker->randomNumber(9),
-	// 'ss' => $faker->numberBetween(1),
+	'ss' => $faker->numerify('###-##-####'),
 	'occupation' => $faker->sentence,
-	'phone_home' => $faker->phoneNumber,
-	'phone_cell' => $faker->phoneNumber,
-	'sex' => $faker->randomElement(['M', 'F']),
+	'phone_home' => $faker->numerify('(###)-###-####'),
+	'phone_cell' => $faker->numerify('(###)-###-####'),
+	'sex' => $faker->randomElement(['Male', 'Female']),
 	'email' => $faker->freeEmail,
 	'status' => $faker->randomElement(['single', 'married', 'divorced', 'widowed', 'separated', 'domestic partner']),
 	'family_size' => $faker->randomDigit,
@@ -54,8 +54,8 @@ $factory('OEMR\\Models\\Pnote', [
 
 $factory('OEMR\\Models\\Facility', [
 	'name' => $faker->company,
-	'phone' => $faker->phoneNumber,
-	'fax' => $faker->phoneNumber,
+	'phone' => $faker->numerify('(###)-###-####'),
+	'fax' => $faker->numerify('(###)-###-####'),
 	'street' => $faker->streetAddress,
 	'city' => $faker->city,
 	'postal_code' => $faker->postcode
